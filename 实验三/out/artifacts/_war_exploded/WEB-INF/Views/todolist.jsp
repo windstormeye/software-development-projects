@@ -11,7 +11,6 @@
     <title>${msg}</title>
 </head>
 <body>
-<h1>${msg}</h1>
-<span>${name}</span>
+    <a href="allThings">查看我的To-do List</a>
 </body>
 </html>

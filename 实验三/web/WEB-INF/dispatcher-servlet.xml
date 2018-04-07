@@ -17,6 +17,8 @@
 
     <!-- 开启注解 -->
     <mvc:annotation-driven/>
+    <!-- mapping后跟的为URL访问时的映射路径 -->
+    <mvc:resources location="/WEB-INF/resource/scripts/js/" mapping="/js/**"></mvc:resources>
 
     <!--ViewResolver 视图解析器-->
     <!--用于支持Servlet、JSP视图解析-->

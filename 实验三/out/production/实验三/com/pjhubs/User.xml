@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper标签要指定namespace属性，不然会报错，可看做包名-->
+<mapper namespace="com.pjhubs.DAO.UserMapper">
+    <select id="selectUserWithID" parameterType="int" resultType="com.pjhubs.Model.User">
+    select * from user where id = #{id}
+</select>
+    <select id="selectAllUser" resultType="com.pjhubs.Model.User">
+    select * from user
+</select>
+    <insert id="insertUser" parameterType="com.pjhubs.Model.User">
+    insert into user(nickname,passwd) values(#{nickname},#{passwd})
+</insert>
+    <delete id="deleteUserWithID" parameterType="int">
+    delete from user where id=#{id}
+</delete>
+    <update id="updateUserWithNickname" parameterType="com.pjhubs.Model.User">
+    update user set nickname=#{nickname} where id=#{id}
+</update>
+</mapper>
