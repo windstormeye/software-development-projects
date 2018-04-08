@@ -9,9 +9,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.List;
 
@@ -41,6 +43,66 @@ public class thingsController {
         session.close();
 
         return userList;
+
+    }
+
+    @RequestMapping(value = "/deleteThing/{id}", method = RequestMethod.POST)
+    public String deleteThing(@PathVariable("id") int id) throws Exception {
+
+        String resource = "com/pjhubs/SqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        mapper.deleteUserWithID(id);
+        session.commit();
+
+        session.close();
+
+        System.out.println(id);
+        return "redirect:/allThings";
+    }
+
+    @RequestMapping(value = "/modify/{id}", method = RequestMethod.POST)
+    public String modifyThing(@PathVariable("id") int id, ModelMap modelMap) throws Exception {
+
+        String resource = "com/pjhubs/SqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user = mapper.selectUserWithID(id);
+        session.commit();
+
+        session.close();
+
+        modelMap.addAttribute("id", user.getId());
+        modelMap.addAttribute("nickname", user.getNickname());
+
+        return "modify";
+    }
+
+    @RequestMapping(value = "/updateStudent/{id}", method = RequestMethod.POST)
+    public String updateStudent(int id, String nickname) throws Exception {
+
+        String resource = "com/pjhubs/SqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+
+        User user = new User();
+        user.setId(id);
+        user.setNickname(nickname);
+
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        mapper.updateUserWithNickname(user);
+        session.commit();
+
+        session.close();
+
+        return "redirect:/allThings";
     }
 
 }

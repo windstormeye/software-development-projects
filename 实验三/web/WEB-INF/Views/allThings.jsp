@@ -12,21 +12,33 @@
 <head>
     <script type="text/javascript" src='<c:url value="/js/jquery-3.3.1.min.js" ></c:url>'></script>
     <script type="text/javascript">
-        // $ (function () {
-        //     for (var i = 0; i < 5; i++) {
-        //         $("#bgView").append('<div id="cellView"></div>');
-        //     }
+        // $(function () {
+        //     $(".delete").click(function () {
+        //         var href = $(this).attr("href");
+        //         $("form").attr("action", href).submit();
+        //         return false;
+        //     });
         // })
     </script>
 </head>
 <body>
     <div id="bgView">
+
         <h1>你的所有联系人</h1>
 
         <c:forEach items="${userList}" var="user">
-
             <div id="cellView">
                 <p>${user.getNickname()}</p>
+                <div id="cellButtonView">
+                    <form action="/deleteThing/${user.getId()}" method="post">
+                        <input type="submit" value="删除">
+                    </form>
+
+                    <form action="/modify/${user.getId()}" method="post">
+                        <input type="submit" value="修改">
+                    </form>
+
+                </div>
             </div>
         </c:forEach>
 
@@ -44,14 +56,25 @@
     #cellView {
         border-radius: 10px;
         border:2px solid gray;
-        width: 70%;
+        width: 40%;
         height: 60px;
         margin:0 auto;
-
         margin-bottom: 20px;
-    }
-</style>
 
-<>
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #cellButtonView {
+        display: flex;
+        align-items: center;
+    }
+
+    #cellButton {
+        margin-right: 10px;
+    }
+
+</style>
 
 </html>
