@@ -125,8 +125,8 @@
       <file leaf-file-name="UserTestWithMapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/pjhubs/test/UserTestWithMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="85" column="22" lean-forward="true" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+            <state relative-caret-position="170">
+              <caret line="61" column="8" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="74" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -473,7 +473,7 @@
       <workItem from="1522901770494" duration="3000" />
       <workItem from="1522915200891" duration="4260000" />
       <workItem from="1523078454975" duration="7681000" />
-      <workItem from="1523175792135" duration="1373000" />
+      <workItem from="1523175792135" duration="1850000" />
     </task>
     <servers />
   </component>
@@ -510,7 +510,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24921000" />
+    <option name="totallyTimeSpent" value="25398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -1004,8 +1004,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pjhubs/test/UserTestWithMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="85" column="22" lean-forward="true" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+        <state relative-caret-position="170">
+          <caret line="61" column="8" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="74" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

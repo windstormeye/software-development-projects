@@ -25,6 +25,7 @@
     <div id="bgView">
 
         <h1>你的所有联系人</h1>
+        <a href="insertUser">新增联系人</a>
 
         <c:forEach items="${userList}" var="user">
             <div id="cellView">
@@ -41,7 +42,6 @@
                 </div>
             </div>
         </c:forEach>
-
     </div>
 </body>
 

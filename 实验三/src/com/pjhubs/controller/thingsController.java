@@ -105,4 +105,28 @@ public class thingsController {
         return "redirect:/allThings";
     }
 
+    @RequestMapping(value = "/insertUser", method = RequestMethod.GET)
+    public String insertUser(ModelMap modelMap) {
+        return "insertUser";
+    }
+
+    @RequestMapping(value = "/insertNewuser", method = RequestMethod.POST)
+    public String updateStudent(String nickname, String passwd) throws Exception {
+
+        String resource = "com/pjhubs/SqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+        User newuser = new User();
+        newuser.setNickname(nickname);
+        newuser.setPasswd(passwd);
+
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        mapper.insertUser(newuser);
+        session.commit();
+        session.close();
+
+        return "redirect:/allThings";
+    }
+
 }
