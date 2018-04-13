@@ -1,6 +1,8 @@
 package com.pjhubs.controller;
 
+import com.pjhubs.DAO.MemoryMapper;
 import com.pjhubs.DAO.UserMapper;
+import com.pjhubs.Model.Memory;
 import com.pjhubs.Model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -17,10 +19,35 @@ import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.List;
 
-@Controller
-@RequestMapping(value = "/", method = RequestMethod.GET)
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
+@Controller
+@Component
 public class thingsController {
+
+    @Scheduled(cron="0/5 * * * * ? ") //间隔5秒执行
+    public void taskCycle() throws Exception {
+        Runtime runtime = Runtime.getRuntime();
+        System.out.println(runtime.maxMemory() / 1024 / 1024 + "," + runtime.totalMemory() / 1024 / 1024 + "," + runtime.freeMemory() / 1024 / 1024);
+
+
+        String resource = "com/pjhubs/SqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+        Memory memory = new Memory();
+        memory.setMax(runtime.maxMemory() / 1024 / 1024);
+        memory.setTotal(runtime.totalMemory() / 1024 / 1024);
+        memory.setFree(runtime.freeMemory() / 1024 / 1024);
+
+
+        MemoryMapper mapper = session.getMapper(MemoryMapper.class);
+        mapper.insertData(memory);
+        session.commit();
+        session.close();
+
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String todoList(ModelMap modelMap) {

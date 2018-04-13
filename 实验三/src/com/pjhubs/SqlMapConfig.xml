@@ -16,5 +16,6 @@
     </environments>
     <mappers>
         <mapper resource="com/pjhubs/User.xml"/>
+        <mapper resource="com/pjhubs/Memory.xml"/>
     </mappers>
 </configuration>
