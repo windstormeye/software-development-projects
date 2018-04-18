@@ -1,7 +1,7 @@
 package com.pjhubs.test;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.pjhubs.instance.User;
 import com.pjhubs.dao.intf.UserDAO;

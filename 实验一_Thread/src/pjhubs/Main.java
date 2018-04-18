@@ -1,6 +1,5 @@
 package pjhubs;
 
-import pjhubs.ThreadClass;
 
 public class Main {
 

@@ -6,7 +6,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.List;
@@ -65,7 +65,7 @@ public class UserTestWithMapper {
         SqlSession session = factory.openSession();
         //---------------------
         User user = new User();
-        user.setNickname("pjpjpj");
+        user.setNickname("yhyyyy");
         user.setPasswd("woaiwoziji123");
 
         UserMapper mapper = session.getMapper(UserMapper.class);
